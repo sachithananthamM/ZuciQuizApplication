@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    body {
+        background-size: cover;
+        background-position: center;
+        background-color: pink
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div class="mt-4">
+        <a href="@Url.Action("Login", "Account")" class="btn btn-primary btn-lg mr-3">Login</a>
+        <a href="@Url.Action("Register", "Account")" class="btn btn-success btn-lg">Register</a>
+    </div>
+</div>

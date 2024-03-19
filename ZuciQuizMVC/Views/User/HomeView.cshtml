@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Six Buttons</title>
+    <style>
+        body {
+
+            background-color:lightgreen; 
+            font-family: Arial, sans-serif; 
+            margin: 0;
+            padding: 0;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .button {
+            background-color:deepskyblue; 
+            border: none;
+            color: white;
+            padding: 50px 70px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 20px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .welcome-text {
+            text-align: center;
+            margin-top: 50px; /* Adjusted top margin for spacing */
+            font-size: 24px; /* Adjusted font size */
+            color: #333; /* Dark gray text color */
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-text">
+        Welcome Admin
+    </div>
+    <div class="button-container">
+        <button class="button" onclick="window.location='@Url.Action("Index", "User")'">User</button>
+        <button class="button" onclick="window.location='@Url.Action("Index", "Topic")'">Topic</button>
+        <button class="button" onclick="window.location='@Url.Action("Index", "Question")'">Question</button>
+    </div>
+
+    <div class="button-container">
+        <button class="button" onclick="window.location='@Url.Action("Index", "Answer")'">Answer</button>
+        <button class="button" onclick="window.location='@Url.Action("Index", "UserAnswer")'">UserAnswer</button>
+        <button class="button" onclick="window.location='@Url.Action("Index", "Score")'">Score</button>
+    </div>
+
+
+</body>
+</html>

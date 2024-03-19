@@ -1,0 +1,38 @@
+﻿@model ZuciQuizLibrary.Models.QuestionWithOptions
+
+@{
+    ViewData["Title"] = "GetQuestionWithOptions";
+    var count = 0;
+    count++;
+}
+
+<h1>GetQuestionWithOptions</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.questionText)
+            </th>
+           
+            
+        </tr>
+       
+    </thead>
+    <tbody>
+    <td>
+        
+            
+          @count.  @Html.DisplayFor(modelItem => Model.questionText.QuestionText)
+         
+    </td>
+        @foreach (var item in (Model.Options))
+        {
+            <tr>
+                <td>
+                    @Html.RadioButtonFor(modelItem => modelItem.userAnswer.Id, item.Id)
+                    @Html.DisplayFor(modelItem => item.Option)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
