@@ -1,4 +1,4 @@
-﻿@model ZuciQuizLibrary.Models.Score
+﻿@model ZuciQuizMVC.Models.ScoreViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -14,7 +14,7 @@
             @Html.DisplayNameFor(model => model.UserId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UserId)
+            @Html.DisplayFor(model => model.User.UserName)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.TopicId)
@@ -35,11 +35,11 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DateCompleted)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model=>model.Feedback)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Feedback)
         </dd>
     </dl>
 </div>

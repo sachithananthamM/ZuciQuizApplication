@@ -1,16 +1,7 @@
-﻿@model IEnumerable<ZuciQuizLibrary.Models.Topic>
+﻿@model IEnumerable<ZuciQuizLibrary.Models.User>
 
 @{
     ViewData["Title"] = "Index";
-    var role = ViewBag.RoleId;
-}
-
-<h1>TOPICS</h1>
-@if (role == 1)
-{
-    <p>
-        <a asp-action="Create" class="btn btn-green">Create New</a>
-    </p>
 }
 
 <style>
@@ -28,15 +19,14 @@
 
         .table th,
         .table td {
-            border: 1px solid #ddd;
+            border: 1px solid white;
             padding: 8px;
             text-align: left;
         }
 
         .table th {
-            background-color: #f2f2f2;
+            background-color: white;
         }
-
 
     .btn {
         display: inline-block;
@@ -63,49 +53,35 @@
     }
 </style>
 
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-green">Create New</a>
+</p>
+
 <table class="table">
     <thead>
         <tr>
-            @if (role == 1)
-            {
-                <th>
-                    @Html.DisplayNameFor(model => model.TopicName)
-                </th>
-            }
+            <th>@Html.DisplayNameFor(model => model.Role.RoleName)</th>
+            <th>@Html.DisplayNameFor(model => model.UserName)</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
+
         @foreach (var item in Model)
         {
             <tr>
-                @if (role == 1)
-                {
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TopicName)
-                    </td>
+                <td>@Html.DisplayFor(modelItem => item.Role.RoleName)</td>
+                <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { userId = item.Id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Details", "Details", new { userId = item.Id }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Delete", "Delete", new { userId = item.Id }, new { @class = "btn btn-red" })
 
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { topicId = item.Id }, new { @class = "btn btn-primary" })
-                        @Html.ActionLink("Details", "Details", new { topicId = item.Id }, new { @class = "btn btn-info" })
-                        @Html.ActionLink("Delete", "Delete", new { topicId = item.Id }, new { @class = "btn btn-red" })
-
-                    </td>
-                }
-                else
-                {
-                    <td colspan="2" class="text-center">
-                        <form asp-controller="UserAnswer" asp-action="GetAllQuestionByTopicId" method="get">
-                            <input type="hidden" name="topicId" value="@item.Id" />
-                            <button type="submit" class="btn btn-success">@item.TopicName</button>
-                        </form>
-                    </td>
-                }
+                </td>
             </tr>
         }
     </tbody>
 </table>
-<br />
-@if (role == 1)
-{
-    <a href="@Url.Action("Index", "IndexofAdmin")" class="btn btn-success">Back to Home Index</a>
-}
+<a href="@Url.Action("Index", "IndexofAdmin")" class="btn btn-success btn-lg">Back to Home Index</a>

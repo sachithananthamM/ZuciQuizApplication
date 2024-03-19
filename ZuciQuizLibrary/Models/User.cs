@@ -19,7 +19,7 @@ namespace ZuciQuizLibrary.Models
         [Required(ErrorMessage = "Enter Your Password Required")]
         [StringLength(200)]
         public string Password { get; set; }= null!;
-        public Role? Role { get; set; } 
+        public Role Role { get; set; } 
 
 
     }

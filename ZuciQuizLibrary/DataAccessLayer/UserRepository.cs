@@ -22,7 +22,7 @@ namespace ZuciQuizLibrary.DataAccessLayer
 
         public async Task<List<User>> GetAllUser()
         {
-            List<User> users = await contextDb.Users.ToListAsync();
+            List<User> users = await contextDb.Users.Include(x=>x.Role).ToListAsync();
             return users;
         }
 

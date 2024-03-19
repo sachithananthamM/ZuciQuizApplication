@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ZuciQuizLibrary.Models;
+using ZuciQuizMVC.Models;
 
 namespace ZuciQuizMVC.Controllers
 {
@@ -16,27 +17,29 @@ namespace ZuciQuizMVC.Controllers
             int correctCount = (int)HttpContext.Session.GetInt32("Mark");
             double score = (double)correctCount / totalQuestions * 100;
             string feedback;
-            Score score1 = new Score();
+            User user = new();
+            ScoreViewModel score1 = new ScoreViewModel();
             score1.Mark = (int)score;
             score1.UserId = userId;
+            score1.User = user;
             score1.TopicId = topicId;
             score1.DateCompleted = DateTime.Now;
-           /* if (score >= 90)
+            if (score >= 90)
             {
-                score1.feedback ="Congratulations on achieving a Highest score of this quiz! Your thorough understanding and impeccable performance are truly commendable.";
+                score1.Feedback = "Congratulations on achieving a Highest score of this quiz! Your thorough understanding and impeccable performance are truly commendable.";
             }
-            else if(score >= 80)
+            else if (score >= 80)
             {
-                score1.feedback = "Well done! Continue Learning Make You Achive More and Your strong grasp of the material and solid performance are evident.";
+                score1.Feedback = "Well done! Continue Learning Make You Achive More and Your strong grasp of the material and solid performance are evident.";
             }
-            else if(score >=60)
+            else if (score >= 60)
             {
-                score1.feedback = "Your effort and understanding are notable, and there's potential for further growth.";   
+                score1.Feedback = "Your effort and understanding are notable, and there's potential for further growth.";
             }
             else
             {
-                score1.feedback = "Sorry You Are Fail in this Subject....Try to learn....";
-            }*/
+                score1.Feedback = "Sorry You Are Fail in this Subject....Try to learn....";
+            }
             return View(score1);
         }
         public async Task<ActionResult> GetOneUserScore(int userId)
