@@ -10,6 +10,7 @@ namespace ZuciQuizMVC.Controllers
     {
         ITopicRepository _topicRepository;
         static HttpClient Svc = new HttpClient { BaseAddress = new Uri("http://localhost:5182/api/Topic/") };
+        static HttpClient Svc1 = new HttpClient { BaseAddress = new Uri("http://localhost:5182/api/User/") };
         public async Task<ActionResult> Index()
         {
             List<Topic> topics = await Svc.GetFromJsonAsync<List<Topic>>("");
@@ -21,6 +22,8 @@ namespace ZuciQuizMVC.Controllers
         public async Task<ActionResult> Details(int topicId)
         {
             Topic topic = await Svc.GetFromJsonAsync<Topic>($"ByTopicId/{topicId}");
+            //User user = await Svc1.GetFromJsonAsync<User>($"ByUserId/{topic.CreatedBy}");
+            //topic.CreatedBy = user.UserName;
             return View(topic);
         }
 

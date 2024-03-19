@@ -8,21 +8,26 @@ namespace ZuciQuizMVC.Controllers
     public class ScoreController : Controller
     {//score base
         static HttpClient Svc = new HttpClient { BaseAddress = new Uri("http://localhost:5182/api/Score/") };
-        public ActionResult Details()
+        static HttpClient Svc1 = new HttpClient { BaseAddress = new Uri("http://localhost:5182/api/Topic/") };
+
+        public async Task<ActionResult> Details()
         {
             int userId = (int)HttpContext.Session.GetInt32("userId");
             string UserName = HttpContext.Session.GetString("userName");
             int topicId = (int)HttpContext.Session.GetInt32("TopicId");
+
             int totalQuestions = (int)HttpContext.Session.GetInt32("Count");
             int correctCount = (int)HttpContext.Session.GetInt32("Mark");
             double score = (double)correctCount / totalQuestions * 100;
             string feedback;
-            User user = new();
+            Topic topicObject = await Svc1.GetFromJsonAsync<Topic>($"ByTopicId/{topicId}");
+             
+            
+
             ScoreViewModel score1 = new ScoreViewModel();
             score1.Mark = (int)score;
-            score1.UserId = userId;
-            score1.User = user;
-            score1.TopicId = topicId;
+            score1.TopicName = topicObject.TopicName;
+            score1.UserName = UserName;
             score1.DateCompleted = DateTime.Now;
             if (score >= 90)
             {

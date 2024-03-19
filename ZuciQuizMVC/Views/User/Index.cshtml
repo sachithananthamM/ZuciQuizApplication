@@ -75,8 +75,7 @@
                 <td>@Html.DisplayFor(modelItem => item.Role.RoleName)</td>
                 <td>@Html.DisplayFor(modelItem => item.UserName)</td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { userId = item.Id }, new { @class = "btn btn-primary" })
-                    @Html.ActionLink("Details", "Details", new { userId = item.Id }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Edit", "Edit", new { userId = item.Id }, new { @class = "btn btn-primary" })| 
                     @Html.ActionLink("Delete", "Delete", new { userId = item.Id }, new { @class = "btn btn-red" })
 
                 </td>
