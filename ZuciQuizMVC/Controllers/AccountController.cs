@@ -31,7 +31,7 @@ namespace ZuciQuizMVC.Controllers
                     HttpContext.Session.SetString("userName", user.UserName);
                     HttpContext.Session.SetString("Password", user.Password);
                     HttpContext.Session.SetInt32("Role", user.RoleId);
-
+                    HttpContext.Session.SetString("IsLogin", "true");
                     if (user.RoleId == 1)
                     {
                         return RedirectToAction("Index", "IndexofAdmin");
@@ -85,6 +85,11 @@ namespace ZuciQuizMVC.Controllers
             {
                 return View();
             }
+        }
+        public ActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
 
 

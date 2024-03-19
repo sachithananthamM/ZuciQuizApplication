@@ -14,8 +14,7 @@ namespace ZuciQuizMVC.Controllers
         public async Task<ActionResult> Index()
         {
 
-            List<UserAnswer>
-                userAnswers = await Svc.GetFromJsonAsync<List<UserAnswer>>("");
+            List<UserAnswer>userAnswers = await Svc.GetFromJsonAsync<List<UserAnswer>>("");
             return View(userAnswers);
         }
 

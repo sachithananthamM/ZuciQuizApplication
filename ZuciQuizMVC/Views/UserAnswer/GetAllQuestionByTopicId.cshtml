@@ -89,6 +89,7 @@
         var selectedValues = {};
         var timeLeft;
         var timerInterval;
+
         function startTimer() {
             timeLeft = sessionStorage.getItem('quizTimer') || 300;
             updateTimerDisplay();
@@ -143,10 +144,11 @@
                 contentType: 'application/json',
                 success: function (response) {
                     console.log(response);
-                    window.location.href = '@Url.Action("Details", "Score")'
+                    window.location.href = '@Url.Action("Details", "Score")';
                 },
                 error: function (xhr, status, error) {
                     console.error(xhr.responseText);
+                    alert('An error occurred while submitting your answers. Please try again later.');
                 }
             });
         }

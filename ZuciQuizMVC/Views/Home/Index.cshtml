@@ -1,19 +1,80 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = null;
 }
 
 <style>
     body {
+        background-image: url('img/home.jpg');
         background-size: cover;
         background-position: center;
-        background-color: pink
     }
 </style>
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light mb-3">
+    <div class="container-fluid" style="background-color:dimgrey">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">QuizApplication</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                @{
+                    var isLogin = Context.Session.GetString("IsLogin");
+                }
+                @if (isLogin == "true")
+                {
+                    <li>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Task" asp-action="Index">Task</a>
+                    </li>
+                }
+                <li>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <div class="mt-4">
-        <a href="@Url.Action("Login", "Account")" class="btn btn-primary btn-lg mr-3">Login</a>
-        <a href="@Url.Action("Register", "Account")" class="btn btn-success btn-lg">Register</a>
+                </li>
+
+
+            </ul>
+            @if (isLogin == "true")
+            {
+                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Logout">Logout</a>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="text-end" style="margin-top:10px;margin-bottom:16px;">
+                            <span class="fs-6">Welcome</span>
+                        </div>
+
+
+                    </div>
+                </div>
+            }
+            else
+            {
+                <a class="nav-link text-dark " asp-area="" asp-controller="User" asp-action="Login" style="padding-right:10px">Login</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Register" style="padding-right:10px">Register</a>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="text-end" style="margin-top:10px;margin-bottom:16px;">
+                            <span class="fs-6"></span> <span class="text-primary"></span>
+                        </div>
+
+
+                    </div>
+                </div>
+            }
+            </ul>
+        </div>
     </div>
-</div>
+</nav>
+<body>
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <div class="mt-4">
+            <a href="@Url.Action("Login", "Account")" class="btn btn-primary btn-lg mr-3">Login</a>
+            <a href="@Url.Action("Register", "Account")" class="btn btn-success btn-lg">Register</a>
+        </div>
+    </div>
+</body>
+

@@ -1,7 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Index";
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,26 +15,22 @@
         .button-container {
             text-align: center;
             margin-top: 70px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            grid-gap: 20px; 
+            margin-left:160px;
         }
 
-        .button {
-            background-color: deepskyblue;
-            border: 2px solid deepskyblue;
-            color: white;
-            padding: 15px 30px; 
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 18px; 
-            margin: 20px;
-            cursor: pointer;
-            border-radius: 0; 
-            transition: background-color 0.3s, color 0.3s, border-color 0.3s; 
-        }
+        
+
+            .button img {
+                max-width: 200%;
+                max-height: 150%;
+            }
 
             .button:hover {
-                background-color: dodgerblue; 
-                border-color: dodgerblue; 
+                background-color: lightgoldenrodyellow;
+                border-color: white;
             }
 
         .welcome-text {
@@ -46,21 +39,33 @@
             font-size: 24px;
             color: #333;
         }
+        .box{
+            margin-top:-50px;
+        }
     </style>
 </head>
 <body>
     <div class="welcome-text">
         Welcome Admin
     </div>
+    <div class="box">
     <div class="button-container">
-        <button class="button" onclick="window.location='@Url.Action("Index", "User")'">User</button>
-        <button class="button" onclick="window.location='@Url.Action("Index", "Topic")'">Topic</button>
+        <button style="width:430px" class="button" onclick="window.location='@Url.Action("Index", "User")'">
+            <img src="~/img/user.jpg" alt="User"> User
+        </button>
+        <button style="width:430px" class="button" onclick="window.location='@Url.Action("Index", "Topic")'">
+            <img src="~/img/topic.jpg" alt="Topic"> Topic
+        </button>
     </div>
-
-    <div class="button-container">
-        <button class="button" onclick="window.location='@Url.Action("Index", "Question")'">Question</button>
-        <button class="button" onclick="window.location='@Url.Action("Index", "Answer")'">Answer</button>
-
+    <br />
+    <div style="margin-left:20px">
+        <button style="margin-left:140px;width:430px"  class="button" onclick="window.location='@Url.Action("Index", "Question")'">
+            <img src="~/img/question.jpg" alt="Question"> Question
+        </button>
+        <button style="margin-left:20px;width:430px" class="button" onclick="window.location='@Url.Action("Index", "Answer")'">
+            <img src="~/img/Answer.png" alt="Answer"> Answer
+        </button>
+    </div>
     </div>
 </body>
 </html>
