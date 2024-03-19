@@ -7,7 +7,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -21,60 +21,52 @@
             <th>
                 @Html.DisplayNameFor(model => model.IsCorrect)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedOn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedOn)
-            </th>
-            <th></th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuestionID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Option)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsCorrect)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedOn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedOn)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { answerId=item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { answerId = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { answerId = item.Id })|
-                    @Html.ActionLink("GetAllOptionsByQuestionId", "GetAllOptionsByQuestionId", new { questionId = item.QuestionID })|
-                    @Html.ActionLink("GetQuestionWithOptions", "GetQuestionWithOptions", new { questionId = item.QuestionID })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuestionID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Option)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsCorrect)
+                </td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a href="@Url.Action("Edit", new { answerId = item.Id })" class="btn btn-sm btn-primary">Edit</a>
+                        <a href="@Url.Action("Details", new { answerId = item.Id })" class="btn btn-sm btn-info">Details</a>
+                        <a href="@Url.Action("Delete", new { answerId = item.Id })" class="btn btn-sm btn-danger">Delete</a>
+                        <a href="@Url.Action("GetQuestionWithOptions", new { questionId = item.QuestionID })" class="btn btn-sm btn-secondary">Options Check</a>
+                    </div>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
-<a href="@Url.Action("Index","IndexofAdmin")" class="btn btn-success btn-lg">Back to Home Index</a>
+
+<a href="@Url.Action("Index", "IndexofAdmin")" class="btn btn-success btn-lg">Back to Home Index</a>
+
+<style>
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+        .table th, .table td {
+            padding: 8px;
+            border: 1px solid #dee2e6;
+        }
+
+    .btn-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+</style>

@@ -90,7 +90,7 @@
         var timeLeft;
         var timerInterval;
         function startTimer() {
-            timeLeft = sessionStorage.getItem('quizTimer') || 300; 
+            timeLeft = sessionStorage.getItem('quizTimer') || 300;
             updateTimerDisplay();
             timerInterval = setInterval(function () {
                 if (timeLeft > 0) {

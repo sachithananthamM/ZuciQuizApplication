@@ -17,37 +17,44 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-color: #f4f7f6;
         }
 
         .login-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             width: 300px;
+            max-width: 90%;
         }
 
             .login-container h2 {
                 text-align: center;
                 margin-bottom: 20px;
+                color: #333333;
             }
 
             .login-container input[type="text"],
-            .login-container input[type="password"],
-            .login-container input[type="submit"] {
-                width: 100%;
+            .login-container input[type="password"] {
+                width: calc(100% - 20px);
                 padding: 10px;
-                margin-top: 10px;
-                margin-bottom: 10px;
+                margin: 10px 0;
                 border: 1px solid #ccc;
-                border-radius: 3px;
+                border-radius: 5px;
                 box-sizing: border-box;
             }
 
             .login-container input[type="submit"] {
                 background-color: #4caf50;
-                color: #fff;
+                color: #ffffff;
+                border: none;
+                border-radius: 5px;
+                padding: 10px 0;
+                width: 100%;
                 cursor: pointer;
+                font-size: 16px;
+                transition: background-color 0.3s;
             }
 
                 .login-container input[type="submit"]:hover {
@@ -56,12 +63,34 @@
 
         .sign-up {
             text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+            .sign-up a {
+                color: #4caf50;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+        .error-message {
+            color: #ff0000;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .fa-lock {
+            color: #4caf50;
+            font-size: 24px;
+            margin-bottom: 20px;
+            display: block;
+            text-align: center;
         }
     </style>
-
 </head>
 <body>
     <div class="login-container">
+        <i class="fas fa-lock"></i>
         <h2>Login</h2>
         @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
         {
@@ -69,14 +98,13 @@
         }
 
         <form asp-action="Verify" method="post" asp-controller="Account">
-            <input type="text" name="userName" placeholder="UserName" required>
+            <input type="text" name="userName" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login">
             <div class="sign-up">
-                Dont Have Account <a asp-action="Register">Sign Up</a>
+                Don't have an account? <a href="@Url.Action("Register", "Account")">Sign Up</a>
             </div>
         </form>
-
     </div>
 </body>
 </html>

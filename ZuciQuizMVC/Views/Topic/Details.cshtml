@@ -3,8 +3,18 @@
 @{
     ViewData["Title"] = "Details";
 }
+<style>
+    a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
 
+        a:hover {
+            text-decoration: underline;
+        }</style>
 <h1>Details</h1>
+
 
 <div>
     <h4>Topic</h4>
@@ -49,6 +59,5 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Index">Back to List</a>
 </div>

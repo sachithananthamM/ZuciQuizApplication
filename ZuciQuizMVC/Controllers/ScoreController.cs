@@ -5,7 +5,7 @@ using ZuciQuizLibrary.Models;
 namespace ZuciQuizMVC.Controllers
 {
     public class ScoreController : Controller
-    {
+    {//score base
         static HttpClient Svc = new HttpClient { BaseAddress = new Uri("http://localhost:5182/api/Score/") };
         public ActionResult Details()
         {

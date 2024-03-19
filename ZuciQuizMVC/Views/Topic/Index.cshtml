@@ -6,15 +6,14 @@
 }
 
 <h1>TOPICS</h1>
-@if (role == 1)
-{
+@if(role==1){
     <p>
         <a asp-action="Create" class="btn btn-green">Create New</a>
     </p>
 }
 
 <style>
-
+    
     body, table {
         padding: 0;
         margin: 0;
@@ -85,7 +84,7 @@
                     </td>
 
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { topicId = item.Id }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Edit", "Edit", new {topicId = item.Id }, new { @class = "btn btn-primary" })
                         @Html.ActionLink("Details", "Details", new { topicId = item.Id }, new { @class = "btn btn-info" })
                         @Html.ActionLink("Delete", "Delete", new { topicId = item.Id }, new { @class = "btn btn-red" })
 

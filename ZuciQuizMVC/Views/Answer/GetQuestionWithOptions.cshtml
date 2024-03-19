@@ -12,18 +12,12 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.questionText)
-            </th>
-           
-            
+            </th>            
         </tr>
-       
     </thead>
     <tbody>
-    <td>
-        
-            
+    <td>   
           @count.  @Html.DisplayFor(modelItem => Model.questionText.QuestionText)
-         
     </td>
         @foreach (var item in (Model.Options))
         {

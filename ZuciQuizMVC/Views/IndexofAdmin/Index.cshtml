@@ -22,17 +22,23 @@
 
         .button {
             background-color: deepskyblue;
-            border: none;
+            border: 2px solid deepskyblue;
             color: white;
-            padding: 50px 70px;
+            padding: 15px 30px; /* Adjusted button size */
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 16px;
+            font-size: 18px; /* Adjusted font size */
             margin: 20px;
             cursor: pointer;
-            border-radius: 10px;
+            border-radius: 0; /* Square shape */
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition effect */
         }
+
+            .button:hover {
+                background-color: dodgerblue; /* Change background color on hover */
+                border-color: dodgerblue; /* Change border color on hover */
+            }
 
         .welcome-text {
             text-align: center;
@@ -49,7 +55,6 @@
     <div class="button-container">
         <button class="button" onclick="window.location='@Url.Action("Index", "User")'">User</button>
         <button class="button" onclick="window.location='@Url.Action("Index", "Topic")'">Topic</button>
-
     </div>
 
     <div class="button-container">
@@ -57,7 +62,5 @@
         <button class="button" onclick="window.location='@Url.Action("Index", "Answer")'">Answer</button>
 
     </div>
-
-
 </body>
 </html>
