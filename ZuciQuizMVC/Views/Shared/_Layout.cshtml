@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/ZuciQuizMVC.styles.css" asp-append-version="true" />
    <style>
         .custom-navbar {
-            background-color: slategrey;
+            background-color:lightseagreen;
         }
 
    </style>
@@ -26,22 +26,20 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>                     
+                                        
                         @{
                             var isLogin = Context.Session.GetString("IsLogin");
                         }
                         @if (isLogin == "true")
                         {
                             <li>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Task" asp-action="Index">Task</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Task" asp-action="Index"></a>
                             </li>
                         }
                         <li>
 
                         </li>
-
+                     
 
                     </ul>
                     @{

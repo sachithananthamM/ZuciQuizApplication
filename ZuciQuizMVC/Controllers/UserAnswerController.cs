@@ -31,6 +31,7 @@ namespace ZuciQuizMVC.Controllers
                 string TopicName;
                 HttpContext.Session.SetInt32("TopicId", topicId);
                 QuestionWithTopic questions = await Svc.GetFromJsonAsync<QuestionWithTopic>($"BytopicId/{topicId}");
+                HttpContext.Session.SetInt32("Total",questions.AllQuestionWithTopic.Count);
                 return View(questions);
             }
             catch
@@ -57,7 +58,7 @@ namespace ZuciQuizMVC.Controllers
             try
             {
                 int totalQuestion;
-                HttpContext.Session.SetInt32("Count", selectedOptions.Count);
+               // HttpContext.Session.SetInt32("Count", selectedOptions.Count);
                 int userId = (int)HttpContext.Session.GetInt32("userId");
                 int topicId = (int)HttpContext.Session.GetInt32("TopicId");
 

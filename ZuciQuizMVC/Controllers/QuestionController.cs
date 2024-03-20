@@ -100,6 +100,7 @@ namespace ZuciQuizMVC.Controllers
         public async Task<ActionResult> GetQuestionByTopicId(int topicId)
         {
             List<Question> questions = await Svc.GetFromJsonAsync<List<Question>>($"BytopicId/{topicId}");
+           // HttpContext.Session.SetInt32("Count", questions.Count);
             return View(questions);
         }
         public async Task<ActionResult> GetTopicNameByTopicId(int topicId)

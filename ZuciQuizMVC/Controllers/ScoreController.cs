@@ -6,7 +6,7 @@ using ZuciQuizMVC.Models;
 namespace ZuciQuizMVC.Controllers
 {
     public class ScoreController : Controller
-    {//score base
+    {
         static HttpClient Svc = new HttpClient { BaseAddress = new Uri("http://localhost:5182/api/Score/") };
         static HttpClient Svc1 = new HttpClient { BaseAddress = new Uri("http://localhost:5182/api/Topic/") };
 
@@ -16,14 +16,12 @@ namespace ZuciQuizMVC.Controllers
             string UserName = HttpContext.Session.GetString("userName");
             int topicId = (int)HttpContext.Session.GetInt32("TopicId");
 
-            int totalQuestions = (int)HttpContext.Session.GetInt32("Count");
+            int totalQuestions = (int)HttpContext.Session.GetInt32("Total");
             int correctCount = (int)HttpContext.Session.GetInt32("Mark");
             double score = (double)correctCount / totalQuestions * 100;
             string feedback;
-            Topic topicObject = await Svc1.GetFromJsonAsync<Topic>($"ByTopicId/{topicId}");
-             
-            
 
+            Topic topicObject = await Svc1.GetFromJsonAsync<Topic>($"ByTopicId/{topicId}"); 
             ScoreViewModel score1 = new ScoreViewModel();
             score1.Mark = (int)score;
             score1.TopicName = topicObject.TopicName;
