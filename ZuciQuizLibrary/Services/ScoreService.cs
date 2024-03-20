@@ -34,5 +34,20 @@ namespace ZuciQuizLibrary.Services
                 throw new Exception("User Not Found");
             }
         }
+
+        public Task<Score> GetScore(int totalQuestions, int correctCount)
+        {
+            try
+            {
+                double score = (double)correctCount / totalQuestions * 100;   // score calculation
+                Score result = new Score { Mark = score }; 
+                return Task.FromResult(result);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("calculation Error", ex);
+            }
+        }
+
     }
 }

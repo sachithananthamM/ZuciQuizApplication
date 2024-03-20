@@ -12,17 +12,18 @@ namespace ZuciQuizLibrary.DataAccessLayer
 
     public class ScoreRepository : IScoreRepository
     {
-        ContextDb context = new ContextDb();
+        ContextDb DBcontext = new ContextDb();
 
         public async Task InsertScore(Score score)
         {
-            await context.Scores.AddAsync(score);
-            await context.SaveChangesAsync();
+            await DBcontext.Scores.AddAsync(score);
+            await DBcontext.SaveChangesAsync();
         }
         public async Task<List<Score>> GetOneUserScore(int userId)
         {
-            List<Score> scores = await (from score in context.Scores where score.UserId == userId select score).ToListAsync();
+            List<Score> scores = await (from score in DBcontext.Scores where score.UserId == userId select score).ToListAsync();
             return scores;
         }
+
     }
 }

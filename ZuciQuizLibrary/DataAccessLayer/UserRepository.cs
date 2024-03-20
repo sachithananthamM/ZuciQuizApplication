@@ -11,7 +11,7 @@ namespace ZuciQuizLibrary.DataAccessLayer
 {
     public class UserRepository : IUserRepository
     {
-        ContextDb contextDb = new ContextDb();
+        readonly ContextDb contextDb = new ContextDb();
 
         public async Task DeleteUser(int userId)
         {
@@ -22,7 +22,7 @@ namespace ZuciQuizLibrary.DataAccessLayer
 
         public async Task<List<User>> GetAllUser()
         {
-            List<User> users = await contextDb.Users.Include(x=>x.Role).ToListAsync();
+            List<User> users = await contextDb.Users.Include(x => x.Role).ToListAsync();
             return users;
         }
 

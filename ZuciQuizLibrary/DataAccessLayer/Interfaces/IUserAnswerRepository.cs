@@ -11,7 +11,6 @@ namespace ZuciQuizLibrary.DataAccessLayer.Interfaces
     {
         Task<Topic> GetTopicById(int topicId);
         Task<List<Question>> GetAllQuestionByTopicId(int topicId);
-        Task<UserAnswer> GetOriginalAnswerByQuestion(int questionId);
         Task<UserAnswer> GetCorrectAnswer(int answerId, int questionId);
         Task InsertUserAnswer(UserAnswer userAnswer);
         Task UpdateUserAnswer(int userAnswerId, UserAnswer userAnswer);

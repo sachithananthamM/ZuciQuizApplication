@@ -11,5 +11,6 @@ namespace ZuciQuizLibrary.Services.Interfaces
     {
         Task InsertScore(Score score);
         Task<List<Score>> GetOneUserScore(int userId);
+        Task<Score> GetScore(int totalQuestion, int correctCount);
     }
 }

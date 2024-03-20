@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace ZuciQuizLibrary.Models
 {
     public class BaseEntity 
-    {
-        
+    { 
         [Key]
         public int Id { get; set; }
         public int CreatedBy { get; set; } 

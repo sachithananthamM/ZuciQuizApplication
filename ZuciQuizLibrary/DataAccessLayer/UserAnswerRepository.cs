@@ -12,7 +12,7 @@ namespace ZuciQuizLibrary.DataAccessLayer
 {
     public class UserAnswerRepository : IUserAnswerRepository
     {
-        ContextDb context = new ContextDb();
+        readonly ContextDb context = new ContextDb();
         public async Task DeleteUserAnswer(int userId, int questionId)
         {
             UserAnswer userAnswer = await (from user in context.UserAnswers where user.UserId == userId && user.QuestionId == questionId select user).FirstAsync();
@@ -31,11 +31,6 @@ namespace ZuciQuizLibrary.DataAccessLayer
             return userAnswer;
         }
 
-        public async Task<UserAnswer> GetOriginalAnswerByQuestion(int questionId)
-        {
-            UserAnswer userAnswer = await (from Answer in context.UserAnswers where Answer.QuestionId == questionId select Answer).FirstAsync();
-            return userAnswer;
-        }
 
         public async Task<Topic> GetTopicById(int topicId)
         {

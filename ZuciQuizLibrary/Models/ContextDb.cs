@@ -1,13 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ZuciQuizLibrary.Models
 {
-    public class ContextDb: DbContext
+    public class ContextDb : DbContext
     {
         public ContextDb() { }
         public ContextDb(DbContextOptions<ContextDb> options)
@@ -15,13 +10,10 @@ namespace ZuciQuizLibrary.Models
         {
         }
         public virtual DbSet<User> Users { get; set; }
-
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Topic> Topics { get; set; }
         public virtual DbSet<Question> Questions { get; set; }
-
         public virtual DbSet<Answer> Answers { get; set; }
-
         public virtual DbSet<UserAnswer> UserAnswers { get; set; }
         public virtual DbSet<Score> Scores { get; set; }
 
